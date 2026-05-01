@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Dark Environmental Hub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000000;
+        }
+        header {
+            background-color: #111111;
+            color: #00ff00;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid #00ff00;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        nav a {
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #00cc00;
+        }
+        .hero {
+            background-color: #111111;
+            padding: 2rem;
+            text-align: center;
+            color: #00ff00;
+        }
+        .contact-container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            flex-wrap: wrap;
+        }
+        .contact-form, .contact-details {
+            flex: 1;
+            min-width: 300px;
+            margin: 1rem;
+            background-color: #111111;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .contact-form h2, .contact-details h2 {
+            color: #00ff00;
+            text-align: center;
+        }
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+        }
+        .contact-form label {
+            margin-top: 1rem;
+            font-weight: bold;
+        }
+        .contact-form input, .contact-form textarea {
+            padding: 0.5rem;
+            margin-top: 0.5rem;
+            background-color: #222222;
+            color: #ffffff;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+        }
+        .contact-form button {
+            margin-top: 1rem;
+            padding: 0.75rem;
+            background-color: #00ff00;
+            color: #000000;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .contact-form button:hover {
+            background-color: #00cc00;
+        }
+        .contact-details p {
+            margin-bottom: 0.5rem;
+        }
+        .contact-details a {
+            color: #00cc00;
+            text-decoration: none;
+        }
+        .contact-details a:hover {
+            color: #00ff00;
+        }
+        footer {
+            background-color: #111111;
+            color: #00ff00;
+            text-align: center;
+            padding: 1rem;
+            border-top: 2px solid #00ff00;
+        }
+        @media (max-width: 768px) {
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1> Contact Us - National Wildlife Protection</h1>
+        <nav>
+            <ul>
+                <li><a href="file:///D:/Website%20Design/home.html">Home</a></li>
+                <li><a href="file:///D:/Website%20Design/blog.html">Blog</a></li>
+                <li><a href="file:///D:/Website%20Design/about%20us.html">About</a></li>
+                <li><a href="file:///D:/Website%20Design/contact.html">Contact</a></li>
+                <li><a href="file:///D:/Website%20Design/privacy%20policy.html">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Get in Touch</h1>
+        <p>Have questions about wildlife protection, conservation tips, or partnerships? Reach out—we're here to help save the planet.</p>
+    </section>
+
+    <div class="contact-container">
+        <section class="contact-form">
+            <h2>Send Us a Message</h2>
+            <form action="#" method="post"> <!-- Placeholder action; replace with actual form handler -->
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="subject">Subject</label>
+                <input type="text" id="subject" name="subject" required>
+
+                <label for="message">Message</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <section class="contact-details">
+            <h2>Contact Details</h2>
+            <p><strong>Email:</strong> <a href="mailto:Nationalwildlifeconservation@gmail.com">nationalwildlifeconservation.com</a></p>
+            <p><strong>Phone:</strong> <a href="tel:+1234567890">(123) 456-7890</a></p>
+            <p><strong>Address:</strong> 544/C - Subhash Nagar,New Delhi-110987,India</p>
+            <p><strong>Follow Us:</strong></p>
+            <p><a href="#">Facebook</a> | <a href="#">Twitter</a> | <a href="#">Instagram</a></p>
+            <p>We respond within 24-48 hours. For urgent wildlife reports, contact local authorities.</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 Dark Environmental Hub. All rights reserved. | <a href="privacy-policy.html" style="color: #00ff00;">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emergency Guide - PetVet.in</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #fff5f5;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #ff0000, #ff4d6d);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('puppy.jpg') no-repeat center/cover;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 36px;
+}
+
+/* Sections */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Warning Box */
+.warning {
+    background: #ff4d4d;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 85%;
+    margin: 20px auto;
+    font-weight: bold;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Grid */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    background: #ffe6e6;
+    margin: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    width: 200px;
+}
+
+/* Button */
+button {
+    padding: 12px 25px;
+    background: #ff0000;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #cc0000;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>🚨 PetVet.in Emergency Guide</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="emergency.html">Emergency</a>
+        <a href="consultation.html">Consultation</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Recognize Symptoms. Act Fast. Save Lives 🐶🐱</h2>
+</div>
+
+<section>
+
+    <!-- Warning -->
+    <div class="warning">
+        ⚠️ This guide is NOT a substitute for veterinary care. In serious cases, contact a vet immediately.
+    </div>
+
+    <!-- Emergency Signs -->
+    <div class="card">
+        <h3>🚨 Emergency Warning Signs</h3>
+        <div class="grid">
+            <div class="item">Difficulty Breathing</div>
+            <div class="item">Excessive Bleeding</div>
+            <div class="item">Seizures</div>
+            <div class="item">Sudden Collapse</div>
+            <div class="item">Poison Ingestion</div>
+            <div class="item">Continuous Vomiting</div>
+        </div>
+    </div>
+
+    <!-- Basic Checks -->
+    <div class="card">
+        <h3>🔍 Basic At-Home Checks (Non-Diagnostic)</h3>
+        <p>
+            These checks help you observe your pet’s condition before visiting a vet.
+        </p>
+        <div class="grid">
+            <div class="item">Check breathing rate</div>
+            <div class="item">Check gum color</div>
+            <div class="item">Check body temperature (touch)</div>
+            <div class="item">Look for wounds or swelling</div>
+            <div class="item">Observe behavior changes</div>
+        </div>
+    </div>
+
+    <!-- First Aid -->
+    <div class="card">
+        <h3>🩹 Basic First Aid Tips</h3>
+        <p>
+            Keep your pet calm, avoid giving human medicines, stop bleeding with clean cloth, and move the pet safely to a vet clinic.
+        </p>
+    </div>
+
+    <!-- Action Button -->
+    <div class="card">
+        <h3>Need Immediate Help?</h3>
+        <p>Contact a veterinarian right away.</p>
+        <a href="emergency.html">
+            <button>Call Emergency Vet</button>
+        </a>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 PetVet.in | Emergency Awareness Guide</p>
+</footer>
+
+</body>
+</html>

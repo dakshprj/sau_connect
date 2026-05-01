@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Dark Environmental Hub</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #ffffff;
+            background-color: #000000;
+        }
+        header {
+            background-color: #111111;
+            color: #00ff00;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid #00ff00;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        nav a {
+            color: #00ff00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #00cc00;
+        }
+        .hero {
+            background-color: #111111;
+            padding: 2rem;
+            text-align: center;
+            color: #00ff00;
+        }
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .main {
+            flex: 3;
+            margin-right: 2rem;
+        }
+        .sidebar {
+            flex: 1;
+            background-color: #111111;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+        .blog-post {
+            background-color: #111111;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+        .blog-post img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .blog-post h3 {
+            color: #00ff00;
+            margin-top: 0.5rem;
+        }
+        .blog-post p {
+            font-size: 0.9rem;
+        }
+        .blog-post a {
+            color: #00cc00;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .blog-post a:hover {
+            color: #00ff00;
+        }
+        .sidebar h3 {
+            color: #00ff00;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .sidebar li {
+            margin-bottom: 0.5rem;
+        }
+        .sidebar a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            color: #00ff00;
+        }
+        footer {
+            background-color: #111111;
+            color: #00ff00;
+            text-align: center;
+            padding: 1rem;
+            border-top: 2px solid #00ff00;
+        }
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            .main {
+                margin-right: 0;
+            }
+            .blog-posts {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog -Environmental Hub </h1>
+        <nav>
+            <ul>
+                <li><a href="file:///D:/Website%20Design/home.html">Home</a></li>
+                <li><a href="file:///D:/Website%20Design/blog.html">Blog</a></li>
+                <li><a href="file:///D:/Website%20Design/about%20us.html">About</a></li>
+                <li><a href="file:///D:/Website%20Design/contact.html">Contact</a></li>
+                <li><a href="file:///D:/Website%20Design/privacy%20policy.html">Privacy</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Environmental Insights</h1>
+        <p>Dive into our dark-themed blog posts on conservation, wildlife, and sustainability. Stay informed and inspired.</p>
+    </section>
+
+    <div class="container">
+        <main class="main">
+            <section class="blog-posts">
+                <article class="blog-post">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSS_rXXaOql53WTS4076tIsgt_IpLbphcCetQ&s" alt="Wildlife conservation">
+                    <h3>Saving Endangered Species</h3>
+                    <p>Explore how deforestation threatens wildlife and what we can do to protect habitats. Learn about global efforts...</p>
+                    <a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/3002931014300615157">Read More</a>
+                </article>
+                <article class="blog-post">
+                    <img src="https://images.unsplash.com/photo-1632247620837-970aa94d2b99?fm=jpg&q=60&w=3000&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8b2NlYW4lMjBwb2xsdXRpb258ZW58MHx8MHx8fDA%3D" alt="Ocean pollution">
+                    <h3>Ocean Pollution Solutions</h3>
+                    <p>Learn about plastic's impact on marine life and sustainable practices to clean our seas. Discover innovative...</p>
+                    <a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/6872087497727328309">Read More</a>
+                </article>
+                <article class="blog-post">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9xSHHReYPxmWyMjcveOWJqX2pKs8eORYbwQ&s" alt="Air pollution and birds">
+                    <h3>Birds and Clean Air</h3>
+                    <p>Discover how air pollution affects bird migration and ways to improve air quality. Tips for a greener...</p>
+                    <a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/5002353960927430446">Read More</a>
+                </article>
+                <article class="blog-post">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVMY1oYbz-Th4JIY63Q7ZxmJcXEfJs1FKHSA&s" alt="Climate change">
+                    <h3>Climate Change Myths Busted</h3>
+                    <p>Debunk common misconceptions about global warming and its effects on ecosystems. Stay educated...</p>
+                    <a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/1185415189809982738">Read More</a>
+                </article>
+                <article class="blog-post">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpM6WLAQ29vbJHCwi2icdP4fhg9urRstP-2A&s" alt="Sustainable living">
+                    <h3>Adopting a Green Lifestyle</h3>
+                    <p>Tips for reducing your carbon footprint and living sustainably. From recycling to renewable energy...</p>
+                    <a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/5393038572868787428">Read More</a>
+                </article>
+                <article class="blog-post">
+                    <img src="https://courtyardkoota.com/wp-content/uploads/2023/12/Project-Tiger1.jpg" alt="Wildlife stories">
+                    <h3>Success Stories in Conservation</h3>
+                    <p>Inspiring tales of species recovery and community efforts. Hope for the future...</p>
+                    <a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/8546449605425980771">Read More</a>
+                </article>
+            </section>
+        </main>
+
+        <aside class="sidebar">
+            <h3>Categories</h3>
+            <ul>
+                <li><a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/3002931014300615157">Wildlife</a></li>
+                <li><a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/6872087497727328309">Aquatic Life</a></li>
+                <li><a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/5002353960927430446">Pollution</a></li>
+                <li><a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/1185415189809982738">Climate</a></li>
+                <li><a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/5393038572868787428">Sustainability</a></li>
+            </ul>
+            <h3>Recent Posts</h3>
+            <ul>
+                <li><a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/3002931014300615157">Saving Endangered Species</a></li>
+                <li><a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/6872087497727328309">Ocean Pollution Solutions</a></li>
+                <li><a href="https://www.blogger.com/blog/post/edit/preview/6834169431418064769/5002353960927430446">Birds and Clean Air</a></li>
+            </ul>
+            <h3>Search</h3>
+            <input type="text" placeholder="Search blogs..." style="width: 100%; padding: 0.5rem; background-color: #222222; color: #ffffff; border: 1px solid #00ff00;">
+        </aside>
+    </div>
+
+    <footer>
+        <p>&copy; 2023 National Wildlife Protection. All rights reserved. | <a href="file:///D:/Website%20Design/privacy%20policy.html" style="color: #00ff00;">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

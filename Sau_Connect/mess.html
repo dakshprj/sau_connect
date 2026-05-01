@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Mess Menu - Full Semester</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 40px 30px;
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.3);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            background: white;
+            border-radius: 20px;
+            padding: 5px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 150px;
+            padding: 20px 15px;
+            border: none;
+            background: transparent;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #6b7280;
+            cursor: pointer;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .tab-btn:hover {
+            background: rgba(255, 107, 107, 0.1);
+            color: #ff6b6b;
+        }
+
+        /* Menu Content */
+        .menu-content {
+            display: none;
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .menu-content.active {
+            display: block;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Week Menu */
+        .week-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .day-card {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-top: 5px solid #ff6b6b;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ff6b6b, #ffa726, #ff6b6b);
+        }
+
+        .day-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+
+        .day-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .day-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .day-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1f293b;
+        }
+
+        .meal-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .meal-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .meal-name {
+            font-weight: 500;
+            color: #374151;
+        }
+
+        .meal-time {
+            background: rgba(255, 107, 107, 0.1);
+            color: #dc2626;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        /* Month Navigation */
+        .month-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 15px;
+        }
+
+        .month-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1f293b;
+        }
+
+        /* Complaint & Suggestion Box */
+        .complaint-section {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border-radius: 25px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .complaint-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.95);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            background: white;
+            box-shadow: 0 0 0 4px rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+        }
+
+        /* Complaints List */
+        .complaints-list {
+            margin-top: 40px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .complaint-item {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .complaint-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .complaint-date {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .status.pending { background: rgba(255, 193, 7, 0.3); color: #856404; }
+        .status.resolved { background: rgba(40, 167, 69, 0.3); color: #155724; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+
+            .nav-tabs {
+                flex-direction: column;
+            }
+
+            .week-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .day-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1><i class="fas fa-utensils"></i> College Mess Menu</h1>
+            <p>Full Semester Menu (August - December 2026) | Fresh & Healthy Food Daily</p>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showWeek('week1')">
+                <i class="fas fa-calendar-week"></i> Week 1
+            </button>
+            <button class="tab-btn" onclick="showWeek('week2')">
+                <i class="fas fa-calendar-week"></i> Week 2
+            </button>
+            <button class="tab-btn" onclick="showWeek('week3')">
+                <i class="fas fa-calendar-week"></i> Week 3
+            </button>
+            <button class="tab-btn" onclick="showWeek('week4')">
+                <i class="fas fa-calendar-week"></i> Week 4
+            </button>
+        </div>
+
+        <!-- Week 1 Menu -->
+        <div id="week1" class="menu-content active">
+            <div class="month-nav">
+                <button onclick="prevWeek()" class="btn" style="padding: 10px 20px; font-size: 1rem;">
+                    <i class="fas fa-chevron-left"></i> Previous
+                </button>
+                <div class="month-title">Week 1: Aug 5 - Aug 11, 2026</div>
+                <button onclick="nextWeek()" class="btn" style="padding: 10px 20px; font-size: 1rem;">
+                    Next <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="week-grid">
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-icon"><i class="fas fa-sun"></i></div>
+                        <div class="day-title">Monday</div>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Poha + Tea</span>
+                        <span class="meal-time">7:30 AM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Dal, Rice, Roti, Veg Sabzi</span>
+                        <span class="meal-time">1:00 PM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Chapati, Paneer Curry, Salad</span>
+                        <span class="meal-time">8:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-icon"><i class="fas fa-seedling"></i></div>
+                        <div class="day-title">Tuesday</div>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Idli + Sambar</span>
+                        <span class="meal-time">7:30 AM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Chicken Curry, Rice, Raita</span>
+                        <span class="meal-time">1:00 PM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Paratha, Dal Makhani</span>
+                        <span class="meal-time">8:00 PM</span>
+                    </div>
+                </div>
+
+                <!-- Add more days... -->
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-icon"><i class="fas fa-drumstick-bite"></i></div>
+                        <div class="day-title">Wednesday</div>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Bread + Omelette</span>
+                        <span class="meal-time">7:30 AM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Fish Curry, Rice</span>
+                        <span class="meal-time">1:00 PM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Noodles, Spring Rolls</span>
+                        <span class="meal-time">8:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-icon"><i class="fas fa-coffee"></i></div>
+                        <div class="day-title">Thursday</div>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Upma + Coffee</span>
+                        <span class="meal-time">7:30 AM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Rajma, Rice, Salad</span>
+                        <span class="meal-time">1:00 PM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Pulao, Raita, Sweet</span>
+                        <span class="meal-time">8:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-icon"><i class="fas fa-cloud-sun"></i></div>
+                        <div class="day-title">Friday</div>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Dosa + Chutney</span>
+                        <span class="meal-time">7:30 AM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Mutton Curry, Naan</span>
+                        <span class="meal-time">1:00 PM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Pizza, Garlic Bread</span>
+                        <span class="meal-time">8:00 PM</span>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-icon"><i class="fas fa-bed"></i></div>
+                        <div class="day-title">Saturday</div>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Puri + Bhaji</span>
+                        <span class="meal-time">8:30 AM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Biryani Special</span>
+                        <span class="meal-time">2:00 PM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Continental Dinner</span>
+                        <span class="meal-time">8:30 PM</span>
+                    </div>
+                </div>
+
+                <div class="day-card">
+                    <div class="day-header">
+                        <div class="day-icon"><i class="fas fa-gift"></i></div>
+                        <div class="day-title">Sunday</div>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Pancakes + Fruits</span>
+                        <span class="meal-time">9:00 AM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Thali Special</span>
+                        <span class="meal-time">2:00 PM</span>
+                    </div>
+                    <div class="meal-item">
+                        <span class="meal-name">Ice Cream + Dessert</span>
+                        <span class="meal-time">8:30 PM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Complaint & Suggestion Box -->
+        <div class="complaint-section">
+            <div class="complaint-form">
+                <h2 style="text-align: center; margin-bottom: 30px; font-size: 2.2rem;">
+                    <i class="fas fa-comment-dots"></i> Feedback & Complaints
+                </h2>
+                <form id="complaintForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-user"></i> Your Name</label>
+                            <input type="text" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-id-card"></i> Room No / ID</label>
+                            <input type="text" placeholder="e.g., 305 or CS2024001" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label><i class="fas fa-list"></i> Category</label>
+                            <select required>
+                                <option value="">Select Category</option>
+                                <option value="food-quality">Food Quality</option>
+                                <option value="quantity">Quantity</option>
+                                <option value="hygiene">Hygiene/Cleanliness</option>
+                                <option value="timing">Timing/Service</option>
+                                <option value="suggestion">Suggestion</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label><i class="fas fa-star"></i> Rating (1-5)</label>
+                            <select required>
+                                <option value="">Select Rating</option>
+                                <option value="5">⭐⭐⭐⭐⭐ Excellent</option>
+                                <option value="4">⭐⭐⭐⭐ Good</option>
+                                <option value="3">⭐⭐⭐ Average</option>
+                                <option value="2">⭐⭐ Poor</option>
+                                <option value="1">⭐ Very Poor</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label><i class="fas fa-edit"></i> Your Feedback / Complaint</label>
+                        <textarea placeholder="Describe your feedback, complaint or suggestion in detail..." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> Submit Feedback
+                    </button>
+                </form>
+
+                <div class="complaints-list" id="complaintsList">
+                    <!-- Recent complaints will appear here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentWeek = 1;
+        const weeks = ['week1', 'week2', 'week3', 'week4'];
+
+        function showWeek(weekId) {
+            document.querySelectorAll('.menu-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(weekId).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function nextWeek() {
+            if (currentWeek < 4) {
+                currentWeek++;
+                showWeek(`week${currentWeek}`);
+            }
+        }
+
+        function prevWeek() {
+            if (currentWeek > 1) {
+                currentWeek--;
+                showWeek(`week${currentWeek}`);
+            }
+        }
+
+        // Complaint form submission
+        document.getElementById('complaintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
+            const complaint = {
+                name: formData.get('name') || 'Anonymous',
+                room: formData.get('room') || 'N/A',
+                category: formData.get('category') || 'Other',
+                rating: formData.get('rating') || 'N/A',
+                message: formData.get('message') || 'No message',
+                date: new Date().toLocaleDateString(),
+                status: 'pending'
+            };
+
+            addComplaintToList(complaint);
+            this.reset();
+            showSuccessMessage('Thank you for your feedback! It has been submitted successfully.');
+        });
+
+        function addComplaintToList(complaint) {
+            const list = document.getElementById('complaintsList');
+            const complaintItem = document.createElement('div');
+            complaintItem.className = 'complaint-item';
+            complaintItem.innerHTML = `
+                <div class="complaint-header">
+                    <div>
+                        <strong>${complaint.name}</strong> (${complaint.room})
+                        <span class="complaint-date">${complaint.date}</span>
+                    </div>
+                    <span class="status ${complaint.status}">${complaint.status.toUpperCase()}</span>
+                </div>
+                <p>${complaint.message.substring(0, 150)}${complaint.message.length > 150 ? '...' : ''}</p>
+                <div style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
+                    Category: ${complaint.category} | Rating: ${complaint.rating}/5
+                </div>
+            `;
+            list.insertBefore(complaintItem, list.firstChild);
+        }
+
+        function showSuccessMessage(message) {
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                background: linear-gradient(135deg, #10b981, #059669);
+                color: white;
+                padding: 20px 30px;
+                border-radius: 15px;
+                box-shadow: 0 15px 35px rgba(16, 185, 129, 0.4);
+                z-index: 10000;
+                font-weight: 600;
+                animation: slideInRight 0.5s ease;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => toast.remove(), 4000);
+        }
+    </script>
+</body>
+</html>

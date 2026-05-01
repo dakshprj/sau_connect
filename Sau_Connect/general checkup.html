@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>General Checkup - PetVet.in</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f9f9;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #ff7a18, #ff4d6d);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('puppy.jpg') no-repeat center/cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 36px;
+}
+
+/* Sections */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+.card {
+    background: #ffffff;
+    padding: 25px;
+    margin: 20px auto;
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Checklist */
+.checklist {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.check-item {
+    background: #dff6ff;
+    margin: 10px;
+    padding: 12px 18px;
+    border-radius: 8px;
+}
+
+/* Form */
+input, select, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e63950;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>🐾 PetVet.in</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="vaccination.html">Vaccination</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Routine Checkups for a Healthy Life 🐶🐱</h2>
+</div>
+
+<section>
+
+    <!-- Info -->
+    <div class="card">
+        <h3>Why Regular Checkups Matter?</h3>
+        <p>
+            Regular veterinary checkups help detect health issues early, maintain your pet’s
+            overall wellness, and ensure a long, happy life. Prevention is always better than cure.
+        </p>
+    </div>
+
+    <!-- What we check -->
+    <div class="card">
+        <h3>What We Check During a Visit</h3>
+        <div class="checklist">
+            <div class="check-item">Weight & Nutrition</div>
+            <div class="check-item">Teeth & Oral Health</div>
+            <div class="check-item">Skin & Coat</div>
+            <div class="check-item">Heart & Lungs</div>
+            <div class="check-item">Vaccination Status</div>
+            <div class="check-item">Parasite Check</div>
+        </div>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="card">
+        <h3>Book a General Checkup</h3>
+
+        <form>
+            <input type="text" placeholder="Owner Name" required><br>
+            <input type="text" placeholder="Pet Name" required><br>
+
+            <select required>
+                <option value="">Select Pet Type</option>
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Bird</option>
+                <option>Other</option>
+            </select><br>
+
+            <input type="number" placeholder="Pet Age (in years)" required><br>
+
+            <input type="date" required><br>
+
+            <textarea placeholder="Any Symptoms or Notes"></textarea><br>
+
+            <button type="submit">Book Checkup</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 PetVet.in | General Checkup Services</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Investment Pricing</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0b0b0b;
+      color: #ffffff;
+      min-height: 100vh;
+    }
+
+    .pricing-section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .pricing-section h1 {
+      font-size: 38px;
+      margin-bottom: 10px;
+      color: #00e5ff;
+    }
+
+    .pricing-section p {
+      color: #b5b5b5;
+      margin-bottom: 60px;
+      font-size: 16px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .pricing-card {
+      background-color: #161616;
+      border-radius: 14px;
+      padding: 35px 30px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 0 30px rgba(0, 229, 255, 0.25);
+    }
+
+    .pricing-card.popular {
+      border: 2px solid #00e5ff;
+    }
+
+    .badge {
+      position: absolute;
+      top: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #00e5ff;
+      color: #000;
+      padding: 6px 16px;
+      font-size: 12px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
+
+    .plan-title {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-size: 42px;
+      margin: 20px 0;
+      color: #00e5ff;
+    }
+
+    .price span {
+      font-size: 16px;
+      color: #aaaaaa;
+    }
+
+    .features {
+      list-style: none;
+      margin: 30px 0;
+      text-align: left;
+    }
+
+    .features li {
+      margin-bottom: 12px;
+      color: #cccccc;
+    }
+
+    .features li::before {
+      content: "✔";
+      color: #00e5ff;
+      margin-right: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 14px;
+      border-radius: 8px;
+      background-color: #00e5ff;
+      color: #000;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #00b8cc;
+    }
+
+  </style>
+</head>
+<body>
+
+  <section class="pricing-section">
+    <h1>Investment Plans</h1>
+    <p>Choose a plan that fits your financial goals</p>
+
+    <div class="pricing-grid">
+
+      <div class="pricing-card">
+        <h2 class="plan-title">Starter</h2>
+        <div class="price">$99 <span>/ month</span></div>
+        <ul class="features">
+          <li>Basic Portfolio Access</li>
+          <li>Monthly Performance Reports</li>
+          <li>Email Support</li>
+          <li>Low-Risk Investments</li>
+        </ul>
+        <a href="#" class="btn">Get Started</a>
+      </div>
+
+      <div class="pricing-card popular">
+        <div class="badge">Most Popular</div>
+        <h2 class="plan-title">Growth</h2>
+        <div class="price">$299 <span>/ month</span></div>
+        <ul class="features">
+          <li>Diversified Portfolio</li>
+          <li>Weekly Performance Reports</li>
+          <li>Priority Support</li>
+          <li>Medium-Risk Investments</li>
+        </ul>
+        <a href="#" class="btn">Start Investing</a>
+      </div>
+
+      <div class="pricing-card">
+        <h2 class="plan-title">Premium</h2>
+        <div class="price">$599 <span>/ month</span></div>
+        <ul class="features">
+          <li>Personal Investment Advisor</li>
+          <li>Daily Performance Reports</li>
+          <li>24/7 Dedicated Support</li>
+          <li>High-Risk / High-Return</li>
+        </ul>
+        <a href="#" class="btn">Join Premium</a>
+      </div>
+
+    </div>
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Dental Care - PetVet.in</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f9f9;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #00c6ff, #ff4d6d);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('puppy.jpg') no-repeat center/cover;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 38px;
+}
+
+/* Sections */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Cards */
+.card {
+    background: #ffffff;
+    padding: 25px;
+    margin: 20px auto;
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Services */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    background: #e0f7ff;
+    margin: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+/* Form */
+input, select, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e63950;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>🦷 PetVet.in Dental Care</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="checkup.html">Checkup</a>
+        <a href="vaccination.html">Vaccination</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Healthy Teeth, Happy Pets 🐶🐱</h2>
+</div>
+
+<section>
+
+    <!-- Info -->
+    <div class="card">
+        <h3>Why Dental Care is Important?</h3>
+        <p>
+            Dental health is crucial for your pet’s overall well-being. Poor oral hygiene can lead 
+            to infections, pain, and serious health problems. Regular dental checkups keep your pet healthy and happy.
+        </p>
+    </div>
+
+    <!-- Services -->
+    <div class="card">
+        <h3>Our Dental Services</h3>
+        <div class="grid">
+            <div class="item">Teeth Cleaning</div>
+            <div class="item">Dental Scaling</div>
+            <div class="item">Tooth Extraction</div>
+            <div class="item">Gum Treatment</div>
+            <div class="item">Oral Checkup</div>
+            <div class="item">Bad Breath Treatment</div>
+        </div>
+    </div>
+
+    <!-- Tips -->
+    <div class="card">
+        <h3>Dental Care Tips</h3>
+        <p>
+            Brush your pet’s teeth regularly, provide dental chew toys, avoid sugary foods, 
+            and schedule routine vet checkups for better oral hygiene.
+        </p>
+    </div>
+
+    <!-- Booking -->
+    <div class="card">
+        <h3>Book a Dental Appointment</h3>
+
+        <form>
+            <input type="text" placeholder="Owner Name" required><br>
+            <input type="text" placeholder="Pet Name" required><br>
+
+            <select required>
+                <option value="">Select Pet Type</option>
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Other</option>
+            </select><br>
+
+            <select required>
+                <option value="">Select Service</option>
+                <option>Teeth Cleaning</option>
+                <option>Dental Scaling</option>
+                <option>Tooth Extraction</option>
+                <option>Oral Checkup</option>
+            </select><br>
+
+            <input type="date" required><br>
+
+            <textarea placeholder="Any Dental Issues?"></textarea><br>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 PetVet.in | Dental Care Services</p>
+</footer>
+
+</body>
+</html>

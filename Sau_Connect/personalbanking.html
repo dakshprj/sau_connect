@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Banking - JPMorgan</title>
+
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            color: #e6edf3; 
+            background: linear-gradient(to bottom, #0d1117, #161b22);
+            background-attachment: fixed;
+        }
+
+        header { 
+            background: rgba(22, 27, 34, 0.95);
+            color: #e6edf3; 
+            padding: 10px 20px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            position: sticky; 
+            top: 0; 
+            z-index: 10; 
+        }
+
+        .logo { 
+            font-size: 24px; 
+            font-weight: bold; 
+            color: #58a6ff;
+        }
+
+        nav ul { 
+            list-style: none; 
+            display: flex; 
+            margin: 0; 
+            padding: 0; 
+        }
+
+        nav li { margin: 0 15px; }
+
+        nav a { 
+            color: #e6edf3; 
+            text-decoration: none; 
+        }
+
+        nav a:hover { color: #58a6ff; }
+
+        .search { display: flex; }
+
+        .search input { 
+            padding: 5px; 
+            border: none; 
+            border-radius: 3px; 
+            background: #0d1117; 
+            color: #e6edf3;
+        }
+
+        .search button {
+            background: #58a6ff;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 3px;
+            color: #0d1117;
+        }
+
+        .user button { 
+            background: #21262d; 
+            color: #e6edf3; 
+            border: 1px solid #30363d; 
+            padding: 5px 10px; 
+            margin-left: 10px; 
+            cursor: pointer; 
+            border-radius: 3px; 
+        }
+
+        .user button:hover { background: #30363d; }
+
+        .hero { 
+            background: linear-gradient(
+                rgba(13,17,23,0.85),
+                rgba(13,17,23,0.85)
+            ), url('https://via.placeholder.com/1200x400/000000/FFFFFF?text=Secure+Banking')
+            no-repeat center/cover;
+            height: 400px; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center; 
+        }
+
+        .hero h1 { 
+            font-size: 48px; 
+            margin: 0; 
+            color: #58a6ff;
+        }
+
+        .hero p { 
+            font-size: 18px; 
+            margin: 10px 0; 
+            color: #b1bac4; 
+        }
+
+        .cta { 
+            background: #58a6ff; 
+            color: #0d1117; 
+            padding: 10px 20px; 
+            text-decoration: none; 
+            border-radius: 5px; 
+            font-weight: bold; 
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .cta:hover { background: #1f6feb; }

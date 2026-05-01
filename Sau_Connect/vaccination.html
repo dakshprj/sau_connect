@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Vaccination - PetVet.in</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f9f9;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #ff7a18, #ff4d6d);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('puppy.jpg') no-repeat center/cover;
+    height: 300px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 36px;
+}
+
+/* Sections */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+.info-box {
+    background: #ffffff;
+    padding: 25px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.vaccine-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.vaccine-item {
+    background: #ffe0cc;
+    margin: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+/* Form */
+input, select {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e63950;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>🐾 PetVet.in</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+</header>
+
+<div class="hero">
+    <h2>Protect Your Pets with Timely Vaccination 💉</h2>
+</div>
+
+<section>
+    <div class="info-box">
+        <h3>Why Vaccination is Important?</h3>
+        <p>
+            Vaccinations protect your pets from serious and potentially life-threatening diseases.
+            Regular vaccination ensures long-term health, prevents infections, and keeps your pet safe.
+        </p>
+    </div>
+
+    <div class="info-box">
+        <h3>Common Vaccines</h3>
+        <div class="vaccine-list">
+            <div class="vaccine-item">Rabies</div>
+            <div class="vaccine-item">Distemper</div>
+            <div class="vaccine-item">Parvovirus</div>
+            <div class="vaccine-item">Hepatitis</div>
+            <div class="vaccine-item">Leptospirosis</div>
+            <div class="vaccine-item">Kennel Cough</div>
+        </div>
+    </div>
+
+    <div class="info-box">
+        <h3>Book a Vaccination Appointment</h3>
+
+        <form>
+            <input type="text" placeholder="Pet Name" required><br>
+            <input type="text" placeholder="Owner Name" required><br>
+
+            <select required>
+                <option value="">Select Pet Type</option>
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Other</option>
+            </select><br>
+
+            <input type="date" required><br>
+
+            <button type="submit">Book Appointment</button>
+        </form>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 PetVet.in | Vaccination Services</p>
+</footer>
+
+</body>
+</html>

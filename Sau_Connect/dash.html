@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAU Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 260px;
+            height: 100vh;
+            background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+            color: white;
+            overflow-y: auto;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar.collapsed {
+            width: 70px;
+        }
+
+        .logo {
+            padding: 25px 30px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo i {
+            font-size: 2rem;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .nav-item {
+            margin-bottom: 5px;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 15px 30px;
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(255,255,255,0.15);
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .nav-link i {
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        .nav-text {
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar.collapsed .nav-text {
+            opacity: 0;
+            position: absolute;
+            left: 70px;
+            white-space: nowrap;
+        }
+
+        /* Main Content */
+        .main-container {
+            margin-left: 260px;
+            min-height: 100vh;
+            transition: margin-left 0.3s ease;
+        }
+
+        .sidebar.collapsed + .main-container {
+            margin-left: 70px;
+        }
+
+        .header {
+            background: white;
+            padding: 20px 30px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .toggle-sidebar {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #64748b;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-sidebar:hover {
+            background: #f1f5f9;
+            color: #1e293b;
+        }
+
+        /* Content Area */
+        .content {
+            padding: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            color: #1e293b;
+        }
+
+        .page-subtitle {
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            border-top: 4px solid;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent-color), transparent);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            opacity: 0.1;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            color: #64748b;
+            font-size: 1rem;
+        }
+
+        /* Tables */
+        .table-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin-bottom: 30px;
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 25px 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 20px 30px;
+            text-align: left;
+        }
+
+        th {
+            background: #f8fafc;
+            font-weight: 600;
+            color: #374151;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        tr {
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        tr:hover {
+            background: #f8fafc;
+        }
+
+        .status {
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .status.active { background: #dcfce7; color: #166534; }
+        .status.pending { background: #fef3c7; color: #92400e; }
+        .status.paid { background: #dbeafe; color: #1e40af; }
+
+        /* Action Buttons */
+        .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Charts Placeholder */
+        .chart-placeholder {
+            height: 300px;
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            margin-bottom: 30px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .main-container {
+                margin-left: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">
+            <i class="fas fa-university"></i>
+            <span class="logo-text">SAU Admin</span>
+        </div>
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="#" class="nav-link active" data-page="overview">
+                    <i class="fas fa-chart-line"></i>
+                    <span class="nav-text">Overview</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="students">
+                    <i class="fas fa-users"></i>
+                    <span class="nav-text">Students</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="attendance">
+                    <i class="fas fa-calendar-check"></i>
+                    <span class="nav-text">Attendance</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="events">
+                    <i class="fas fa-calendar-days"></i>
+                    <span class="nav-text">Events</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="mess">
+                    <i class="fas fa-utensils"></i>
+                    <span class="nav-text">Mess Menu</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="hostel">
+                    <i class="fas fa-building"></i>
+                    <span class="nav-text">Hostel</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="fees">
+                    <i class="fas fa-receipt"></i>
+                    <span class="nav-text">Fees</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link" data-page="activities">
+                    <i class="fas fa-tasks"></i>
+                    <span class="nav-text">Activities</span>
+                </a>
+            </li>
+        </ul>
+    </aside>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Header -->
+        <header class="header">
+            <button class="toggle-sidebar" id="toggleSidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="header-actions">
+                <span>Welcome, Admin!</span>
+                <i class="fas fa-bell" style="font-size: 1.3rem; color: #3b82f6;"></i>
+            </div>
+        </header>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Overview -->
+            <section id="overview" class="page-content active">
+                <h1 class="page-title">Dashboard Overview</h1>
+                <p class="page-subtitle">Quick insights into college operations</p>
+                
+                <div class="stats-grid">
+                    <div class="stat-card" style="--accent-color: #3b82f6;">
+                        <i class="fas fa-users stat-icon"></i>
+                        <div class="stat-number">2,847</div>
+                        <div class="stat-label">Total Students</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #10b981;">
+                        <i class="fas fa-calendar-check stat-icon"></i>
+                        <div class="stat-number">94.2%</div>
+                        <div class="stat-label">Avg Attendance</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #f59e0b;">
+                        <i class="fas fa-receipt stat-icon"></i>
+                        <div class="stat-number">₹2.4Cr</div>
+                        <div class="stat-label">Total Fees</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #ef4444;">
+                        <i class="fas fa-utensils stat-icon"></i>
+                        <div class="stat-number">4.3/5</div>
+                        <div class="stat-label">Mess Rating</div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                    <div class="table-container">
+                        <div class="table-header">
+                            <h3>Recent Activities</h3>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Activity</th>
+                                    <th>Date</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Sports Day Registration</td>
+                                    <td>15 Dec 2024</td>
+                                    <td><span class="status active">Active</span></td>
+                                    <td><button class="btn btn-primary"><i class="fas fa-eye"></i> View</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Fee Collection Report</td>
+                                    <td>14 Dec 2024</td>
+                                    <td><span class="status active">Active</span></td>
+                                    <td><button class="btn btn-primary"><i class="fas fa-eye"></i> View</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <div class="chart-placeholder">
+                            <i class="fas fa-chart-pie" style="font-size: 3rem; margin-bottom: 15px;"></i>
+                            <div>Attendance Analytics<br><small>Weekly Trends</small></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Students -->
+            <section id="students" class="page-content">
+                <h1 class="page-title">Students Details</h1>
+                <div class="table-container">
+                    <div class="table-header" style="display: flex; justify-content: space-between; align-items: center;">
+                        <h3>All Students</h3>
+                        <button class="btn btn-success"><i class="fas fa-plus"></i> Add Student</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Course</th>
+                                <th>Year</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>CS001</td>
+                                <td>Krish Kapoor</td>
+                                <td>B.Tech CSE</td>
+                                <td>2nd Year</td>
+                                <td>+91 98765 43210</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <button class="btn btn-primary"><i class="fas fa-eye"></i></button>
+                                    <button class="btn" style="background: #f97316; color: white;"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>CS002</td>
+                                <td>Ishaan mishra</td>
+                                <td>B.Tech CSE</td>
+                                <td>2nd Year</td>
+                                <td>+91 98765 43211</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <button class="btn btn-primary"><i class="fas fa-eye"></i></button>
+                                    <button class="btn" style="background: #f97316; color: white;"><i class="fas fa-edit"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Attendance -->
+            <section id="attendance" class="page-content">
+                <h1 class="page-title">Attendance Management</h1>
+                <p class="page-subtitle">Monitor student attendance across all classes</p>
+                <div class="stats-grid">
+                    <div class="stat-card" style="--accent-color: #10b981;">
+                        <div class="stat-number">94.2%</div>
+                        <div class="stat-label">This Month Avg</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #f59e0b;">
+                        <div class="stat-number">87%</div>
+                        <div class="stat-label">CSE Dept</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Events -->
+            <section id="events" class="page-content">
+                <h1 class="page-title">Events Management</h1>
+                <div class="table-container">
+                    <div class="table-header" style="display: flex; justify-content: space-between;">
+                        <h3>Upcoming Events</h3>
+                        <button class="btn btn-success"><i class="fas fa-plus"></i> New Event</button>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Event</th>
+                                <th>Date</th>
+                                <th>Venue</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Annual Sports Day</td>
+                                <td>15 Dec 2024</td>
+                                <td>Sports Ground</td>
+                                <td><span class="status active">Active</span></td>
+                                <td><button class="btn btn-primary">View</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Mess Menu -->
+            <section id="mess" class="page-content">
+                <h1 class="page-title">Mess Menu Management</h1>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Weekly Menu</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Day</th>
+                                <th>Breakfast</th>
+                                <th>Lunch</th>
+                                <th>Dinner</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Monday</td>
+                                <td>Poha + Tea</td>
+                                <td>Dal, Rice, Roti</td>
+                                <td>Chapati, Paneer</td>
+                                <td><button class="btn btn-primary">Edit</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Hostel -->
+            <section id="hostel" class="page-content">
+                <h1 class="page-title">Hostel Management</h1>
+                <div class="stats-grid">
+                    <div class="stat-card" style="--accent-color: #8b5cf6;">
+                        <div class="stat-number">847</div>
+                        <div class="stat-label">Boys Hostel</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #ec4899;">
+                        <div class="stat-number">423</div>
+                        <div class="stat-label">Girls Hostel</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fees -->
+            <section id="fees" class="page-content">
+                <h1 class="page-title">Fees Management</h1>
+                <div class="table-container">
+                    <div class="table-header">
+                        <h3>Fee Collection Status</h3>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Amount</th>
+                                <th>Due Date</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ishaan Mishra(CS001)</td>
+                                <td>₹15,000</td>
+                                <td>15 Jun 2026</td>
+                                <td><span class="status paid">Paid</span></td>
+                                <td><button class="btn btn-primary">Receipt</button></td>
+                               
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Activities -->
+            <section id="activities" class="page-content">
+                <h1 class="page-title">Campus Activities</h1>
+                <p class="page-subtitle">Manage all student activities and clubs</p>
+                <div class="stats-grid">
+                    <div class="stat-card" style="--accent-color: #06b6d4;">
+                        <div class="stat-number">12</div>
+                        <div class="stat-label">Active Clubs</div>
+                    </div>
+                    <div class="stat-card" style="--accent-color: #84cc16;">
+                        <div class="stat-number">156</div>
+                        <div class="stat-label">Participants</div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const pageContents = document.querySelectorAll('.page-content');
+        const sidebar = document.getElementById('sidebar');
+        const toggleSidebar = document.getElementById('toggleSidebar');
+
+        function showPage(pageId) {
+            pageContents.forEach(content => content.classList.remove('active'));
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            document.getElementById(pageId).classList.add('active');
+            event.target.closest('.nav-link').classList.add('active');
+        }
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pageId = link.getAttribute('data-page');
+                showPage(pageId);
+            });
+        });
+
+        // Sidebar toggle
+        toggleSidebar.addEventListener('click', () => {
+            sidebar.classList.toggle('collapsed');
+        });
+
+        // Mobile sidebar toggle
+        if (window.innerWidth <= 1024) {
+            sidebar.classList.add('open');
+        }
+
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 1024) {
+                sidebar.classList.remove('open');
+            }
+        });
+
+        // Add hover effects to stat cards
+        document.querySelectorAll('.stat-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.transform = 'translateY(-8px)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'translateY(0)';
+            });
+        });
+
+        // Animate numbers on scroll (simplified)
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

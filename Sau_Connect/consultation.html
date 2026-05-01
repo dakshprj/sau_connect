@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Consultation - PetVet.in</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f9f9;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #6a11cb, #2575fc);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('puppy.jpg') no-repeat center/cover;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 38px;
+}
+
+/* Sections */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Consultation Options */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    background: #e8f0ff;
+    margin: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+/* Form */
+input, select, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    background: #2575fc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1a5fd1;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>💬 PetVet.in Online Consultation</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="checkup.html">Checkup</a>
+        <a href="emergency.html">Emergency</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Talk to a Vet Anytime, Anywhere 🐶🐱</h2>
+</div>
+
+<section>
+
+    <!-- Info -->
+    <div class="card">
+        <h3>What is Online Consultation?</h3>
+        <p>
+            Online consultation allows pet owners to connect with qualified veterinarians from home.
+            You can discuss symptoms, get advice, and receive treatment guidance without visiting a clinic.
+        </p>
+    </div>
+
+    <!-- Modes -->
+    <div class="card">
+        <h3>Consultation Modes</h3>
+        <div class="grid">
+            <div class="item">📞 Phone Call</div>
+            <div class="item">🎥 Video Call</div>
+            <div class="item">💬 Chat Support</div>
+            <div class="item">📩 Email Advice</div>
+        </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="card">
+        <h3>Benefits</h3>
+        <p>
+            Quick response, no travel needed, affordable care, and instant guidance for non-emergency pet issues.
+        </p>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="card">
+        <h3>Book an Online Consultation</h3>
+
+        <form>
+            <input type="text" placeholder="Owner Name" required><br>
+            <input type="text" placeholder="Pet Name" required><br>
+
+            <select required>
+                <option value="">Select Pet Type</option>
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Bird</option>
+                <option>Other</option>
+            </select><br>
+
+            <select required>
+                <option value="">Select Consultation Type</option>
+                <option>General Advice</option>
+                <option>Skin Issues</option>
+                <option>Diet/Nutrition</option>
+                <option>Behavior Issues</option>
+                <option>Follow-up</option>
+            </select><br>
+
+            <input type="date" required><br>
+
+            <textarea placeholder="Describe your pet’s problem"></textarea><br>
+
+            <button type="submit">Start Consultation</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 PetVet.in | Online Veterinary Care</p>
+</footer>
+
+</body>
+</html>

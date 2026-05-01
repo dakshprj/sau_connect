@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Pollution & Birds Protection - Clean Skies for Avian Life</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #e0e0e0;
+            background-color: #2c2c2c;
+        }
+        header {
+            background-color: #424242;
+            color: #8bc34a;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 2px solid #8bc34a;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        nav a {
+            color: #8bc34a;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        nav a:hover {
+            color: #aed581;
+        }
+        .hero {
+            background-image: url('https://via.placeholder.com/1200x400/757575/FFFFFF?text=Polluted+Sky+Birds'); /* Placeholder for polluted sky with birds */
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Dark overlay for text readability */
+        }
+        .hero h1, .hero p {
+            position: relative;
+            z-index: 1;
+        }
+        .hero a {
+            background-color: #8bc34a;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            position: relative;
+            z-index: 1;
+        }
+        .hero a:hover {
+            background-color: #689f38;
+        }
+        .section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #424242;
+            margin-bottom: 1rem;
+            border-radius: 8px;
+        }
+        .section h2 {
+            color: #8bc34a;
+            text-align: center;
+        }
+        .impacts {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .impact {
+            flex: 1;
+            min-width: 250px;
+            margin: 1rem;
+            text-align: center;
+            background-color: #616161;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+        .impact img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        footer {
+            background-color: #1a1a1a;
+            color: #8bc34a;
+            text-align: center;
+            padding: 1rem;
+            border-top: 2px solid #8bc34a;
+        }
+        @media (max-width: 768px) {
+            .impacts {
+                flex-direction: column;
+            }
+            .hero {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🦅 Air Pollution & Birds Protection 🦅</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#impacts">Impacts</a></li>
+                <li><a href="#help">How to Help</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Combat Air Pollution to Protect Birds</h1>
+        <p>Air pollution threatens bird populations worldwide, from respiratory issues to habitat loss. Join us in creating cleaner skies for migratory birds and urban wildlife.</p>
+        <a href="#help">Take Action</a>
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Air Pollution and Birds</h2>
+        <p>Birds are highly sensitive to air quality. Pollutants like smog and toxins disrupt migration, breeding, and survival. Protecting birds means fighting pollution for a healthier planet.</p>
+    </section>
+
+    <section id="impacts" class="section">
+        <h2>Impacts of Air Pollution on Birds</h2>
+        <div class="impacts">
+            <div class="impact">
+                <img src="https://via.placeholder.com/300x150/757575/FFFFFF?text=Smog+Hazards" alt="Birds in smog">
+                <h3>Respiratory Damage</h3>
+                <p>Pollutants cause lung issues, reducing bird lifespan and flight ability.</p>
+            </div>
+            <div class="impact">
+                <img src="https://via.placeholder.com/300x150/757575/FFFFFF?text=Habitat+Loss" alt="Polluted habitats">
+                <h3>Habitat Disruption</h3>
+                <p>Acid rain and toxins destroy nesting sites and food sources.</p>
+            </div>
+            <div class="impact">
+                <img src="https://via.placeholder.com/300x150/757575/FFFFFF?text=Migration+Disruption" alt="Birds migrating through pollution">
+                <h3>Migration Interference</h3>
+                <p>Climate change from pollution alters migration patterns and routes.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="help" class="section">
+        <h2>How You Can Help</h2>
+        <ul>
+            <li><strong>Reduce Emissions:</strong> Use public transport, bike, or walk to cut vehicle pollution.</li>
+            <li><strong>Plant Trees:</strong> Support reforestation to improve air quality and bird habitats.</li>
+            <li><strong>Advocate:</strong> Support clean air policies and organizations like the Audubon Society.</li>
+            <li><strong>Educate:</strong> Share facts about pollution's effects on birds.</li>
+        </ul>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: cleanairbirds@example.com | Phone: (123) 456-7890</p>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; background-color: #616161; color: white; border: 1px solid #8bc34a;"><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; background-color: #616161; color: white; border: 1px solid #8bc34a;"><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" style="width: 100%; padding: 0.5rem; margin-bottom: 1rem; background-color: #616161; color: white; border: 1px solid #8bc34a;"></textarea><br>
+            <input type="submit" value="Send Message" style="background-color: #8bc34a; color: white; padding: 0.5rem 1rem; border: none; border-radius: 5px; cursor: pointer;">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 Air Pollution & Birds Protection Initiative. All rights reserved. | <a href="#" style="color: #8bc34a;">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Grooming - PetVet.in</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f9f9;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #ff914d, #4dd2ff);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                url('puppy.jpg') no-repeat center/cover;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 38px;
+}
+
+/* Sections */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Card */
+.card {
+    background: #ffffff;
+    padding: 25px;
+    margin: 20px auto;
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Services */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    background: #ffe6f0;
+    margin: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+/* Form */
+input, select, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e63950;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>✂️ PetVet.in Grooming</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="checkup.html">Checkup</a>
+        <a href="vaccination.html">Vaccination</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Keep Your Pets Clean, Fresh & Happy 🐶🐱</h2>
+</div>
+
+<section>
+
+    <!-- Short Description -->
+    <div class="card">
+        <h3>About Pet Grooming</h3>
+        <p>
+            Pet grooming is essential for maintaining your pet’s hygiene, comfort, and appearance. 
+            Regular grooming helps prevent skin infections, reduces shedding, and keeps your pet healthy and happy.
+        </p>
+    </div>
+
+    <!-- Services -->
+    <div class="card">
+        <h3>Our Grooming Services</h3>
+        <div class="grid">
+            <div class="item">Bath & Shampoo</div>
+            <div class="item">Hair Cutting</div>
+            <div class="item">Nail Clipping</div>
+            <div class="item">Ear Cleaning</div>
+            <div class="item">Flea Treatment</div>
+            <div class="item">De-shedding</div>
+        </div>
+    </div>
+
+    <!-- Benefits -->
+    <div class="card">
+        <h3>Benefits of Grooming</h3>
+        <p>
+            Improves hygiene, prevents infections, reduces shedding, enhances appearance, and keeps your pet comfortable and stress-free.
+        </p>
+    </div>
+
+    <!-- Booking Form -->
+    <div class="card">
+        <h3>Book a Grooming Appointment</h3>
+
+        <form>
+            <input type="text" placeholder="Owner Name" required><br>
+            <input type="text" placeholder="Pet Name" required><br>
+
+            <select required>
+                <option value="">Select Pet Type</option>
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Other</option>
+            </select><br>
+
+            <select required>
+                <option value="">Select Grooming Service</option>
+                <option>Full Grooming</option>
+                <option>Bath Only</option>
+                <option>Hair Cut</option>
+                <option>Nail Clipping</option>
+            </select><br>
+
+            <input type="date" required><br>
+
+            <textarea placeholder="Any Special Instructions?"></textarea><br>
+
+            <button type="submit">Book Grooming</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 PetVet.in | Grooming Services</p>
+</footer>
+
+</body>
+</html>

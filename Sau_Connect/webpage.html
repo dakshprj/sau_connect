@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Homepage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: #333;
+        }
+        header {
+            background-color: #022e5c;
+            color: rgb(18, 94, 192);
+            padding: 1rem;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 1rem;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+        }
+        .hero {
+            background-color: #f4f4f4;
+            padding: 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            margin: 0;
+        }
+        .section {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service {
+            flex: 1;
+            min-width: 200px;
+            margin: 1rem;
+            text-align: center;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        @media (max-width: 768px) {
+            .services {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+       <h1 style="font-family: Verdana, sans-serif;">Alethia</h1>
+
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <h1>Welcome to My Homepage</h1>
+        <p>Begging with something new, Something innovative, Something creative</p>
+        <a href="#contact" style="background-color: #007bff; color: white; padding: 0.5rem 1rem; text-decoration: none; border-radius: 5px;">Get Started</a>
+    </section>
+
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p>We are a forward-thinking consulting firm dedicated to helping organizations navigate complexity, drive sustainable growth, and achieve measurable results. With a strong focus on strategic insight, data-driven decision-making, and practical execution, we partner with clients across industries to solve critical business challenges. Our team combines deep industry knowledge with innovative thinking to deliver tailored solutions that align with each client’s goals. At the core of our approach is a commitment to integrity, collaboration, and long-term value creation, ensuring that our clients are not only prepared for today’s challenges but also positioned for future success.</p>
+    </section>
+
+    <section id="services" class="section">
+        <h2>Our Services</h2>
+        <div class="services">
+            <div class="service">
+                <h3>Service 1</h3>
+                <a href = "file:///D:/Website%20Design/Servies1.html">Services1</a>
+
+                <p>Wildlife protection involves conserving animals, plants, and their natural habitats to maintain ecological balance. It helps prevent species extinction, preserves biodiversity, and ensures that ecosystems remain healthy and sustainable for future generations. Human activities like deforestation, poaching, and pollution make wildlife protection essential for the survival of many species.</p>
+            </div>
+            <div class="service">
+                <h3>Service 2</h3>
+                <a href ="file:///D:/Website%20Design/services2.html">Services2</a>
+                <p>Aquatic wildlife protection focuses on conserving animals and plants that live in water, such as fish, amphibians, marine mammals, and aquatic plants. Protecting these species involves preserving their natural habitats, preventing water pollution, controlling overfishing, and reducing human disturbances. Safeguarding aquatic ecosystems is essential for maintaining biodiversity, supporting fisheries, and ensuring the health of rivers, lakes, and oceans for future generations.</p>
+            </div>
+            <div class="service">
+                <h3>Service 3</h3>
+                <a href = "file:///D:/Website%20Design/Services3.html">Services3</a>
+                <p>Air pollution harms birds by contaminating the air they breathe and the food they eat. Smoke, dust, and harmful gases can damage their respiratory systems and reduce their survival. Protecting birds means keeping the air clean, reducing emissions, and preserving natural habitats so they can live safely and thrive.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <h2>Contact Us</h2>
+        <p>Email: info@example.com | Phone: (123) 456-7890</p>
+        <form>
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name"><br><br>
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email"><br><br>
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message"></textarea><br><br>
+            <input type="submit" value="Send">
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2023 My Website. All rights reserved.</p>
+    </footer>
+</body>
+</html>

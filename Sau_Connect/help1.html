@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAU Campus Safety & Services</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .hero {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
+        .hero h1 { font-size: 3.5em; margin-bottom: 20px; font-weight: 700; }
+        .hero p { font-size: 1.3em; margin-bottom: 30px; opacity: 0.95; }
+        .emergency-btn {
+            display: inline-block;
+            background: #ff4757;
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 10px 30px rgba(255,71,87,0.4);
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+        .emergency-btn:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(255,71,87,0.6); }
+        
+        .container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #1e3c72;
+            position: relative;
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            border-top: 5px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5em;
+            color: white;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .lost-found { background: linear-gradient(135deg, #ff6b6b, #ee5a24); }
+        .security { background: linear-gradient(135deg, #4834d4, #686de0); }
+        .taxi { background: linear-gradient(135deg, #10ac84, #00d2d3); }
+        .animal { background: linear-gradient(135deg, #feca57, #ff9ff3); }
+        .service-card h3 { font-size: 1.8em; margin-bottom: 15px; color: #2d3436; }
+        .service-card p { color: #636e72; margin-bottom: 25px; }
+        .action-buttons { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(102,126,234,0.4); }
+        .btn-secondary {
+            background: transparent;
+            color: #667eea;
+            border: 2px solid #667eea;
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .btn-secondary:hover { background: #667eea; color: white; }
+        
+        .emergency-numbers {
+            background: linear-gradient(135deg, #ff4757, #ff3838);
+            color: white;
+            text-align: center;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 60px 0;
+        }
+        .emergency-numbers h3 { font-size: 2.2em; margin-bottom: 30px; }
+        .number-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .number-item {
+            background: rgba(255,255,255,0.2);
+            padding: 25px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .number-item strong { font-size: 2em; display: block; margin-bottom: 5px; }
+        
+        .footer {
+            background: #2d3436;
+            color: #ddd;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5em; }
+            .services-grid { grid-template-columns: 1fr; }
+            .action-buttons { flex-direction: column; }
+            .emergency-btn { display: block; margin: 10px 0; }
+        }
+        
+        /* Pulse animation for emergency */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255,71,87,0.7); }
+            70% { box-shadow: 0 0 0 20px rgba(255,71,87,0); }
+            100% { box-shadow: 0 0 0 0 rgba(255,71,87,0); }
+        }
+        .emergency-btn { animation: pulse 2s infinite; }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1><i class="fas fa-shield-alt"></i> SAU Campus Safety</h1>
+            <p>Your safety is our priority. 24/7 support for all students & staff.</p>
+            <a href="tel:+911234567890" class="emergency-btn">🚨 Emergency SOS</a>
+            <a href="#services" class="emergency-btn">📞 Help Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <div class="container" id="services">
+        <h2 class="section-title">Quick Help Services</h2>
+        
+        <div class="services-grid">
+            <!-- Lost & Found -->
+            <div class="service-card">
+                <div class="service-icon lost-found">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Lost & Found</h3>
+                <p>Report lost items or claim found items. Wallet, keys, laptop, ID cards.</p>
+                <div class="action-buttons">
+                    <a href="tel:+911122334455" class="btn-primary">
+                        <i class="fas fa-phone"></i> Call Now
+                    </a>
+                    <a href="#report-form" class="btn-secondary">
+                        <i class="fas fa-plus"></i> Report Item
+                    </a>
+                </div>
+            </div>
+
+            <!-- Security Help -->
+            <div class="service-card">
+                <div class="service-icon security">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+                <h3>Security Help</h3>
+                <p>24/7 security escort, suspicious activity report, safety patrols.</p>
+                <div class="action-buttons">
+                    <a href="tel:+911133445566" class="btn-primary">
+                        <i class="fas fa-phone"></i> Security Desk
+                    </a>
+                    <a href="#security-form" class="btn-secondary">
+                        <i class="fas fa-exclamation-triangle"></i> Report Issue
+                    </a>
+                </div>
+            </div>
+
+            <!-- Late Night Taxi -->
+            <div class="service-card">
+                <div class="service-icon taxi">
+                    <i class="fas fa-taxi"></i>
+                </div>
+                <h3>Late Night Taxi</h3>
+                <p>Safe rides after 10 PM. Pre-booked taxis to airport, metro, hostels.</p>
+                <div class="action-buttons">
+                    <a href="#taxi-form" class="btn-primary">
+                        <i class="fas fa-calendar-check"></i> Book Taxi
+                    </a>
+                    <a href="tel:+911144556677" class="btn-secondary">
+                        <i class="fas fa-clock"></i> Call Transport
+                    </a>
+                </div>
+            </div>
+
+            <!-- Animal Abuse/Attack -->
+            <div class="service-card">
+                <div class="service-icon animal">
+                    <i class="fas fa-paw"></i>
+                </div>
+                <h3>Animal Safety</h3>
+                <p>Stray animal attacks, abuse reports, animal welfare assistance.</p>
+                <div class="action-buttons">
+                    <a href="tel:+911155667788" class="btn-primary">
+                        <i class="fas fa-phone"></i> Report Now
+                    </a>
+                    <a href="#animal-form" class="btn-secondary">
+                        <i class="fas fa-heart"></i> Help Animals
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergency Numbers -->
+    <section class="emergency-numbers">
+        <h3><i class="fas fa-exclamation-circle"></i> 24/7 Emergency Contacts</h3>
+        <div class="number-grid">
+            <div class="number-item">
+                <strong>+91 11 1234 5678</strong>
+                <div>Campus Security</div>
+            </div>
+            <div class="number-item">
+                <strong>+91 11 2345 6789</strong>
+                <div>Medical Emergency</div>
+            </div>
+            <div class="number-item">
+                <strong>100</strong>
+                <div>Police Emergency</div>
+            </div>
+            <div class="number-item">
+                <strong>108</strong>
+                <div>Ambulance</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p><i class="fas fa-heart"></i> South Asian University | Campus Safety Division | 24/7 Available</p>
+        <p>Rajpur Khurd Road, Maidan Garhi, New Delhi - 110030</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Emergency call simulation
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                // For demo - shows alert with number
+                e.preventDefault();
+                const number = this.getAttribute('href').replace('tel:', '');
+                if (confirm(`Calling ${number}...\n\n(This is a demo. Use real numbers in production.)`)) {
+                    window.location.href = this.getAttribute('href');
+                }
+            });
+        });
+
+        // Add click animations
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 150);
+            });
+        });
+    </script>
+</body>
+</html>

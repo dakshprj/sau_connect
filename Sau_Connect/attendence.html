@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Attendance System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 25px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            opacity: 0.9;
+            font-size: 1.1rem;
+        }
+
+        .progress-bar {
+            background: rgba(255,255,255,0.3);
+            height: 8px;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981, #34d399);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .step {
+            display: none;
+            padding: 40px;
+            animation: slideIn 0.5s ease;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Step 1: Student Details */
+        .student-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #374151;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 15px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.1);
+        }
+
+        /* Step 2: Attendance Marking */
+        .attendance-container {
+            text-align: center;
+        }
+
+        .student-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .student-photo {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            font-weight: 300;
+        }
+
+        .student-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: #1f2937;
+        }
+
+        .student-info p {
+            color: #6b7280;
+            margin-bottom: 5px;
+        }
+
+        .attendance-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            min-width: 160px;
+            justify-content: center;
+        }
+
+        .btn-present {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+
+        .btn-absent {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+
+        .students-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .marked-student {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            animation: slideInLeft 0.5s ease;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .summary {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .summary h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #1f2937;
+        }
+
+        .summary-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 25px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 1rem;
+        }
+
+        .btn-back, .btn-next {
+            background: linear-gradient(135deg, #6b7280, #4b5563);
+            color: white;
+            margin: 10px;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .students-attended {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .attendance-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 200px;
+            }
+
+            .students-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1><i class="fas fa-calendar-check"></i>  SAU Student Attendance System</h1>
+            <p>Enter student details and mark attendance for today's class</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- Step 1: Student Details Form -->
+        <div id="step1" class="step active">
+            <form class="student-form" id="studentForm">
+                <div class="form-group">
+                    <label for="studentName"><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="studentName" required placeholder="Enter student full name">
+                </div>
+                <div class="form-group">
+                    <label for="studentId"><i class="fas fa-id-card"></i> Student ID</label>
+                    <input type="text" id="studentId" required placeholder="e.g., CS2024001">
+                </div>
+                <div class="form-group">
+                    <label for="course"><i class="fas fa-graduation-cap"></i> Course</label>
+                    <select id="course" required>
+                        <option value="">Select Course</option>
+                        <option value="B.Tech CSE">B.Tech Computer Science</option>
+                        <option value="B.Tech ECE">B.Tech Electronics</option>
+                        <option value="B.Tech ME">B.Tech Mechanical</option>
+                        <option value="B.Sc Physics">B.Sc Physics</option>
+                        <option value="B.Com">B.Com</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="year"><i class="fas fa-calendar-alt"></i> Year</label>
+                    <select id="year" required>
+                        <option value="">Select Year</option>
+                        <option value="1st Year">1st Year</option>
+                        <option value="2nd Year">2nd Year</option>
+                        <option value="3rd Year">3rd Year</option>
+                        <option value="4th Year">4th Year</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="subject"><i class="fas fa-book"></i> Subject/Class</label>
+                    <input type="text" id="subject" required placeholder="e.g., Data Structures">
+                </div>
+                <div class="form-group">
+                    <label for="date"><i class="fas fa-calendar-day"></i> Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="navigation-buttons">
+                    <button type="button" class="btn btn-back" onclick="resetForm()">
+                        <i class="fas fa-redo"></i> Reset
+                    </button>
+                    <button type="submit" class="btn btn-present">
+                        <i class="fas fa-arrow-right"></i> Next - Mark Attendance
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Step 2: Mark Attendance -->
+        <div id="step2" class="step">
+            <div class="attendance-container">
+                <div class="student-card" id="currentStudent">
+                    <div class="student-photo" id="studentPhoto">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="student-info" id="studentInfo">
+                        <h3 id="displayName"></h3>
+                        <p id="displayId"></p>
+                        <p id="displayCourse"></p>
+                        <p id="displayYear"></p>
+                    </div>
+                </div>
+
+                <h2 style="margin-bottom: 30px; color: #374151;">Mark Attendance for Today</h2>
+                
+                <div class="attendance-buttons">
+                    <button class="btn btn-present" onclick="markPresent()">
+                        <i class="fas fa-check-circle"></i> Present
+                    </button>
+                    <button class="btn btn-absent" onclick="markAbsent()">
+                        <i class="fas fa-times-circle"></i> Absent
+                    </button>
+                </div>
+
+                <div class="navigation-buttons" style="margin-top: 20px;">
+                    <button class="btn btn-back" onclick="previousStudent()">
+                        <i class="fas fa-arrow-left"></i> Previous Student
+                    </button>
+                    <button class="btn btn-present" onclick="addNewStudent()">
+                        <i class="fas fa-plus"></i> Add New Student
+                    </button>
+                </div>
+            </div>
+
+            <!-- Marked Students List -->
+            <div id="studentsList" class="students-list"></div>
+
+            <!-- Summary -->
+            <div class="summary" id="summary" style="display: none;">
+                <h3><i class="fas fa-chart-bar"></i> Attendance Summary</h3>
+                <div class="summary-stats">
+                    <div class="stat">
+                        <div class="stat-number" id="totalStudents">0</div>
+                        <div class="stat-label">Total Students</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="presentCount">0</div>
+                        <div class="stat-label">Present</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="absentCount">0</div>
+                        <div class="stat-label">Absent</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number" id="attendancePercentage">0%</div>
+                        <div class="stat-label">Attendance %</div>
+                    </div>
+                </div>
+                <div class="navigation-buttons">
+                    <button class="btn btn-back" onclick="showStudentsList()">
+                        <i class="fas fa-list"></i> View List
+                    </button>
+                    <button class="btn btn-present" onclick="downloadReport()" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8);">
+                        <i class="fas fa-download"></i> Download Report
+                    </button>
+                    <button class="btn btn-back" onclick="resetAll()" style="background: linear-gradient(135deg, #6b7280, #4b5563);">
+                        <i class="fas fa-redo"></i> New Session
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let students = [];
+        let currentStudentIndex = 0;
+        let step = 1;
+
+        // Set today's date
+        document.getElementById('date').valueAsDate = new Date();
+
+        // Step 1: Handle student form submission
+        document.getElementById('studentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const student = {
+                name: document.getElementById('studentName').value,
+                id: document.getElementById('studentId').value,
+                course: document.getElementById('course').value,
+                year: document.getElementById('year').value,
+                subject: document.getElementById('subject').value,
+                date: document.getElementById('date').value,
+                status: null,
+                initial: document.getElementById('studentName').value.charAt(0).toUpperCase()
+            };
+
+            students.push(student);
+            showStudent(0);
+            nextStep();
+            updateProgress();
+        });
+
+        function nextStep() {
+            step = 2;
+            document.getElementById('step1').classList.remove('active');
+            document.getElementById('step2').classList.add('active');
+        }
+
+        function showStudent(index) {
+            currentStudentIndex = index;
+            const student = students[index];
+            
+            document.getElementById('displayName').textContent = student.name;
+            document.getElementById('displayId').textContent = `ID: ${student.id}`;
+            document.getElementById('displayCourse').textContent = student.course;
+            document.getElementById('displayYear').textContent = student.year;
+            document.getElementById('studentPhoto').innerHTML = `<i class="fas fa-user"></i>`;
+            document.getElementById('studentPhoto').style.background = `linear-gradient(135deg, ${getRandomColor()}, ${getRandomColor2()})`;
+            
+            updateStudentsList();
+        }
+
+        function markPresent() {
+            students[currentStudentIndex].status = 'Present';
+            showSuccessMessage('Present marked successfully!');
+            nextStudent();
+        }
+
+        function markAbsent() {
+            students[currentStudentIndex].status = 'Absent';
+            showSuccessMessage('Absent marked successfully!');
+            nextStudent();
+        }
+
+        function nextStudent() {
+            if (currentStudentIndex < students.length - 1) {
+                showStudent(currentStudentIndex + 1);
+            } else {
+                showSummary();
+            }
+        }
+
+        function previousStudent() {
+            if (currentStudentIndex > 0) {
+                showStudent(currentStudentIndex - 1);
+            }
+        }
+
+        function showSummary() {
+            updateSummary();
+            document.getElementById('currentStudent').style.display = 'none';
+            document.getElementById('studentsList').style.display = 'none';
+            document.getElementById('summary').style.display = 'block';
+        }
+
+        function showStudentsList() {
+            document.getElementById('currentStudent').style.display = 'block';
+            document.getElementById('summary').style.display = 'none';
+            updateStudentsList();
+        }
+
+        function updateSummary() {
+            const present = students.filter(s => s.status === 'Present').length;
+            const absent = students.filter(s => s.status === 'Absent').length;
+            const total = students.length;
+            const percentage = total > 0 ? Math.round((present / total) * 100) : 0;
+
+            document.getElementById('totalStudents').textContent = total;
+            document.getElementById('presentCount').textContent = present;
+            document.getElementById('absentCount').textContent = absent;
+            document.getElementById('attendancePercentage').textContent = percentage + '%';
+        }
+
+        function updateStudentsList() {
+            const listContainer = document.getElementById('studentsList');
+            listContainer.innerHTML = '';
+            
+            students.forEach((student, index) => {
+                if (student.status) {
+                    const studentDiv = document.createElement('div');
+                    studentDiv.className = `marked-student ${student.status.toLowerCase()}`;
+                    studentDiv.innerHTML = `
+                        <div>
+                            <strong>${student.name}</strong><br>
+                            <small>${student.id} - ${student.course}</small>
+                        </div>
+                        <div>
+                            <i class="fas fa-${student.status === 'Present' ? 'check-circle' : 'times-circle'}" 
+                               style="font-size: 1.5rem;"></i>
+                        </div>
+                    `;
+                    listContainer.appendChild(studentDiv);
+                }
+            });
+        }
+
+        function addNewStudent() {
+            step = 1;
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('studentForm').reset();
+        }
+
+        function updateProgress() {
+            const progress = step === 1 ? 25 : 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function showSuccessMessage(message) {
+            // Create toast notification
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: linear-gradient(135deg, #10b981, #059669);
+                color: white;
+                padding: 15px 25px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                z-index: 10000;
+                animation: slideInRight 0.5s ease;
+            `;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        function resetForm() {
+            document.getElementById('studentForm').reset();
+        }
+
+        function resetAll() {
+            students = [];
+            currentStudentIndex = 0;
+            step = 1;
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('step2').classList.remove('active');
+            document.getElementById('summary').style.display = 'none';
+            document.getElementById('currentStudent').style.display = 'block';
+            updateProgress();
+        }
+
+        function downloadReport() {
+            const present = students.filter(s => s.status === 'Present').length;
+            const total = students.length;
+            const report = students.map(s => 
+                `${s.name} (${s.id}) - ${s.status || 'Pending'}`
+            ).join('\n');
+            
+            const blob = new Blob([`Attendance Report - ${new Date().toLocaleDateString()}\n\nTotal: ${total}\nPresent: ${present}\n\n${report}`], 
+                { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `attendance_${new Date().toISOString().split('T')[0]}.txt`;
+            a.click();
+        }
+
+        function getRandomColor() {
+            const colors = ['#667eea', '#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+
+        function getRandomColor2() {
+            const colors = ['#764ba2', '#f093fb', '#f5576c', '#4facfe', '#00f2fe', '#43e97b'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>

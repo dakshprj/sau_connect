@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parasite Control - PetVet.in</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f9f9;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #ff6f00, #ff4d6d);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('puppy.jpg') no-repeat center/cover;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 38px;
+}
+
+/* Sections */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Grid */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    background: #fff0e6;
+    margin: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+/* Form */
+input, select, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    background: #ff4d6d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #e63950;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>🐛 PetVet.in Parasite Care</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="checkup.html">Checkup</a>
+        <a href="vaccination.html">Vaccination</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Protect Your Pets from Harmful Parasites 🐶🐱</h2>
+</div>
+
+<section>
+
+    <!-- Info -->
+    <div class="card">
+        <h3>Why Parasite Control is Important?</h3>
+        <p>
+            Parasites like fleas, ticks, and worms can cause serious health issues in pets including itching, infections, anemia, and digestive problems. Regular prevention keeps your pet safe and healthy.
+        </p>
+    </div>
+
+    <!-- Parasites -->
+    <div class="card">
+        <h3>Common Parasites</h3>
+        <div class="grid">
+            <div class="item">Fleas</div>
+            <div class="item">Ticks</div>
+            <div class="item">Intestinal Worms</div>
+            <div class="item">Mites</div>
+            <div class="item">Heartworms</div>
+        </div>
+    </div>
+
+    <!-- Symptoms -->
+    <div class="card">
+        <h3>Warning Signs</h3>
+        <p>
+            Excessive scratching, hair loss, weight loss, vomiting, diarrhea, or visible insects on skin may indicate parasite infection.
+        </p>
+    </div>
+
+    <!-- Prevention -->
+    <div class="card">
+        <h3>Prevention Methods</h3>
+        <p>
+            Regular deworming, flea & tick treatments, clean environment, and routine vet checkups help prevent parasite infections.
+        </p>
+    </div>
+
+    <!-- Booking -->
+    <div class="card">
+        <h3>Book Parasite Control Treatment</h3>
+
+        <form>
+            <input type="text" placeholder="Owner Name" required><br>
+            <input type="text" placeholder="Pet Name" required><br>
+
+            <select required>
+                <option value="">Select Pet Type</option>
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Other</option>
+            </select><br>
+
+            <select required>
+                <option value="">Select Problem</option>
+                <option>Fleas</option>
+                <option>Ticks</option>
+                <option>Worms</option>
+                <option>General Prevention</option>
+            </select><br>
+
+            <input type="date" required><br>
+
+            <textarea placeholder="Describe symptoms (if any)"></textarea><br>
+
+            <button type="submit">Book Treatment</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 PetVet.in | Parasite Control Services</p>
+</footer>
+
+</body>
+</html>

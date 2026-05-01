@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pet Boarding - PetVet.in</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f4f9f9;
+}
+
+/* Header */
+header {
+    background: linear-gradient(90deg, #ff914d, #6a11cb);
+    color: white;
+    padding: 15px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: bold;
+}
+
+/* Hero */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+                url('puppy.jpg') no-repeat center/cover;
+    height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+}
+
+.hero h2 {
+    font-size: 38px;
+}
+
+/* Sections */
+section {
+    padding: 40px;
+    text-align: center;
+}
+
+/* Cards */
+.card {
+    background: white;
+    padding: 25px;
+    margin: 20px auto;
+    width: 85%;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Grid */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item {
+    background: #e8f0ff;
+    margin: 10px;
+    padding: 15px 20px;
+    border-radius: 10px;
+}
+
+/* Form */
+input, select, textarea {
+    width: 80%;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    background: #6a11cb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #520da8;
+}
+
+/* Footer */
+footer {
+    background: #222;
+    color: white;
+    padding: 15px;
+    text-align: center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h2>🏡 PetVet.in Boarding</h2>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="checkup.html">Checkup</a>
+        <a href="grooming.html">Grooming</a>
+    </nav>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+    <h2>Safe & Comfortable Home Away from Home 🐶🐱</h2>
+</div>
+
+<section>
+
+    <!-- Intro -->
+    <div class="card">
+        <h3>About Pet Boarding</h3>
+        <p>
+            Pet boarding provides a safe, clean, and comfortable environment for your pets when you are away. 
+            We ensure proper feeding, care, playtime, and medical attention if needed.
+        </p>
+    </div>
+
+    <!-- Facilities -->
+    <div class="card">
+        <h3>Our Facilities</h3>
+        <div class="grid">
+            <div class="item">24/7 Supervision</div>
+            <div class="item">Clean Sleeping Areas</div>
+            <div class="item">Nutritious Meals</div>
+            <div class="item">Daily Walks & Playtime</div>
+            <div class="item">Medical Support</div>
+            <div class="item">Safe Environment</div>
+        </div>
+    </div>
+
+    <!-- Packages -->
+    <div class="card">
+        <h3>Boarding Packages</h3>
+        <div class="grid">
+            <div class="item">Basic Stay</div>
+            <div class="item">Daily Care Package</div>
+            <div class="item">Luxury Suite</div>
+            <div class="item">Long-Term Stay</div>
+        </div>
+    </div>
+
+    <!-- Booking -->
+    <div class="card">
+        <h3>Book Pet Boarding</h3>
+
+        <form>
+            <input type="text" placeholder="Owner Name" required><br>
+            <input type="text" placeholder="Pet Name" required><br>
+
+            <select required>
+                <option value="">Select Pet Type</option>
+                <option>Dog</option>
+                <option>Cat</option>
+                <option>Other</option>
+            </select><br>
+
+            <select required>
+                <option value="">Select Package</option>
+                <option>Basic Stay</option>
+                <option>Daily Care</option>
+                <option>Luxury Suite</option>
+                <option>Long-Term Stay</option>
+            </select><br>
+
+            <input type="date" required><br>
+            <input type="date" required placeholder="Return Date"><br>
+
+            <textarea placeholder="Special Instructions (Diet, Health, etc.)"></textarea><br>
+
+            <button type="submit">Book Boarding</button>
+        </form>
+    </div>
+
+</section>
+
+<footer>
+    <p>© 2026 PetVet.in | Pet Boarding Services</p>
+</footer>
+
+</body>
+</html>
